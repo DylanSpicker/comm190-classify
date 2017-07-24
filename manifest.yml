@@ -1,0 +1,9 @@
+applications:
+- path: .
+  memory: 128M
+  instances: 1
+  domain: mybluemix.net
+  name: comm190-classify
+  host: comm190-classify
+  disk_quota: 1024M
+  buildpack: python_buildpack
