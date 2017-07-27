@@ -3,10 +3,10 @@ from flask import Flask, jsonify, request
 from watson_developer_cloud import NaturalLanguageClassifierV1
 
 natural_language_classifier = NaturalLanguageClassifierV1(
-  username='3a7e240e-b28e-46b0-aa6c-6a59310ea203',
-  password='EG7xOCiiL8uq')
+  username='<Your_NLC_Username>',
+  password='<Your_NLC_Password>')
 
-classifier_id = '359f41x201-nlc-198247'
+classifier_id = '<Your_classifier_ID>'
 
 app = Flask(__name__)
 
