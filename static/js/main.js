@@ -63,14 +63,22 @@ $("#analyze_text").on("click", function(){
 });
 
 /*
-* When the comment is clicked (div with a class of default-comment), take the comment contents and
-*   put them into the text area. Then trigger a clicking of the submit button which will allow the analysis
-*   to go through the previous route.
+* When the link with 'random-comment' class is clicked, we will make an ajax request to a backend URL 
+* at /random-comment which simply returns the text of a comment choosen at random.
+* This text is then added to the comment box.
 */ 
-$(".default-comment").on("click", function(){
-    var comment_text = $(this).children("p").text();    // Get the text from the p tag within the clicked div
-    $("#comment_query").val(comment_text.trim());              // Update the textarea's value to be the comment_text
-    $("#analyze_text").trigger("click");                // Simulate a click on the "analyze_text" button
+$(".random-comment").on("click", function(){
 
-    return false;
+    $.ajax({
+        'url': 'random-comment',    // GET: /random-comment
+        'method': 'GET',            //    no data is required
+        'success': function(response) {
+            if (response.length > 0) { 
+                // If the response is set, add it to the text area
+                $("#comment_query").val(response);
+            }
+        }
+    });
+
+    return false; // Ensures that the link is not followed
 });
